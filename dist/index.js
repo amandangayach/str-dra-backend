@@ -50201,16 +50201,28 @@ var order_routes_default = orderRouter;
 
 // src/types/blogCategories.ts
 var BlogCategories = [
-  "Assignment Writing Help",
-  "Research paper Assistance",
-  "Dissertation & Thesis Help",
-  "Case Studies",
-  "Referencing & Proofreading",
-  "Plagiarism & Content Originality",
-  "Academic Subjects",
-  "Programming & IT",
-  "Exam & Test Preparation",
-  "Online Tutoring"
+  "Breaking News",
+  "Company News & Announcements",
+  "Regional Construction Updates",
+  "Construction News & Updates",
+  "Basements & Groundworks",
+  "Civils & Infrastructure",
+  "Sub-Structure & Superstructure",
+  "Structural Engineering & RC Works",
+  "Shell & Core / Cut & Carve Projects",
+  "Steel & Timber Structures",
+  "Extensions & Alterations",
+  "Demolition & Enabling Works",
+  "Roofing & External Works",
+  "Interior Fit-Out & Finishes",
+  "Stairs, Joinery & Carpentry",
+  "Landscaping & External Features",
+  "Design, Architecture & Compliance",
+  "Case Studies & Project Insights",
+  "Construction Guides & FAQs",
+  "Industry Insights & Trends",
+  "Research & Innovation",
+  "Features & Thought Leadership"
 ];
 
 // src/models/blog.model.ts
@@ -50375,7 +50387,7 @@ var createBlog = async (req, res) => {
       contentUrl,
       thumbnailUrl,
       creator,
-      authorName,
+      authorName: authorName || req.user.name,
       tags,
       category,
       readTime,
@@ -52402,8 +52414,8 @@ var getSubjectCounts = async (req, res) => {
   }
 };
 var validateSample = [
-  expressValidator.body("title").trim().notEmpty().withMessage("Title is required").isLength({ min: 3, max: 200 }).withMessage("Title must be between 3 and 200 characters"),
-  expressValidator.body("description").trim().notEmpty().withMessage("Description is required").isLength({ min: 10, max: 1e3 }).withMessage("Description must be between 10 and 1000 characters"),
+  expressValidator.body("title").trim().notEmpty().withMessage("Title is required").isLength({ min: 3, max: 5e3 }).withMessage("Title must be between 3 and 5000 characters"),
+  expressValidator.body("description").trim().notEmpty().withMessage("Description is required").isLength({ min: 10, max: 1e4 }).withMessage("Description must be between 10 and 10000 characters"),
   expressValidator.body("content").optional().isLength({ min: 10 }).withMessage("Content must be at least 10 characters"),
   expressValidator.body("subject").notEmpty().withMessage("Subject is required"),
   expressValidator.body("wordCount").optional().isInt({ min: 0 }).withMessage("Word count must be a non-negative integer"),
